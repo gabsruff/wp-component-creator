@@ -1,0 +1,45 @@
+.section {
+  font-family: sans-serif;
+  text-align: center;
+}
+
+.container {
+  font-family: sans-serif;
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  margin: 2rem auto;
+}
+
+.card {
+  border: 1px solid #ddd;
+  border-radius: 12px;
+  padding: 1.5rem;
+  width: 220px;
+  background: #fff;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+  text-align: center;
+  transition: transform 0.2s ease-in-out;
+}
+
+.card:hover {
+  transform: scale(1.05);
+}
+
+.title {
+  font-weight: bold;
+  font-size: 1.2rem;
+  margin-bottom: 0.5rem;
+}
+
+.price {
+  font-size: 1.5rem;
+  color: #00a09a;
+  margin-bottom: 1rem;
+}
+
+.feature {
+  font-size: 0.9rem;
+  color: #555;
+  margin: 0.25rem 0;
+}

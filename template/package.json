@@ -1,0 +1,21 @@
+{
+  "name": "template",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "config": "node scripts/setup-ftp.js",
+    "deploy": "node scripts/deploy.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "module",
+  "dependencies": {
+    "basic-ftp": "^5.0.5",
+    "inquirer": "^12.9.3",
+    "vite": "^7.1.3"
+  }
+}

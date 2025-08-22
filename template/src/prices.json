@@ -1,0 +1,17 @@
+[
+  {
+    "title": "Básico",
+    "price": "$10/mes",
+    "features": ["1 sitio", "Soporte por email", "Actualizaciones automáticas"]
+  },
+  {
+    "title": "Pro",
+    "price": "$25/mes",
+    "features": ["5 sitios", "Soporte prioritario", "Backups diarios"]
+  },
+  {
+    "title": "Premium",
+    "price": "$50/mes",
+    "features": ["Sitios ilimitados", "Soporte 24/7", "Hosting incluido"]
+  }
+]
