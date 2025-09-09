@@ -12,7 +12,7 @@
   "keywords": [],
   "author": "",
   "license": "ISC",
-  "type": "module",
+  "type": "module",  
   "dependencies": {
     "basic-ftp": "^5.0.5",
     "inquirer": "^12.9.3",
