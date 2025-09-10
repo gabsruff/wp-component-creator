@@ -20,7 +20,6 @@ pnpm-debug.log*
 temp/
 
 # Ambiente local
-ftp-config.json
 .env
 .env.local
 .env.*.local

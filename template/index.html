@@ -6,7 +6,11 @@
     <title>Wordpress Component</title>
   </head>
   <body>
-    <div id="component"></div>
+    <script type="module">
+      const root = document.createElement("div");
+      root.id = import.meta.env.VITE_COMPONENT_SLUG;
+      document.body.appendChild(root);
+    </script>
     <script type="module" src="/src/main.js"></script>
   </body>
 </html>

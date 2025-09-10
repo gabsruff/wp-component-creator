@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 import inquirer from "inquirer";
-import fs from "fs-extra";
+import { promises as fsp } from "fs";
 import path from "path";
 import { fileURLToPath } from "url";
 
@@ -24,26 +24,47 @@ const run = async () => {
     { name: "dir", message: "Directorio destino:", default: "my-plugin" },
   ]);
 
-  // 2. Copiar archivos base
+  // 2. Copiar archivos base (Node 16.7+ soporta fs.cp con recursive)
   const templateDir = path.join(__dirname, "template");
   const targetDir = path.join(process.cwd(), answers.dir);
-  fs.copySync(templateDir, targetDir);
+
+  await fsp.cp(templateDir, targetDir, { recursive: true });
 
   // 3. Procesar plugin.php.tpl
-  const pluginTpl = fs.readFileSync(
+  const pluginTpl = await fsp.readFile(
     path.join(templateDir, "wp-plugin/plugin.php.tpl"),
     "utf-8"
   );
+
   const pluginContent = pluginTpl
-    .replace(/<%= pluginName %>/g, answers.pluginName)
-    .replace(/<%= pluginDescription %>/g, answers.pluginDescription)
+    .replace(/<%= componentName %>/g, answers.pluginName)
+    .replace(/<%= componentDescription %>/g, answers.pluginDescription)
     .replace(/<%= author %>/g, answers.author)
     .replace(/<%= slug %>/g, answers.slug);
 
   const pluginPhpPath = path.join(targetDir, `wp-plugin/${answers.slug}.php`);
-  fs.writeFileSync(pluginPhpPath, pluginContent, "utf-8");
+  await fsp.writeFile(pluginPhpPath, pluginContent, "utf-8");
+
   const pluginTplTempPath = path.join(targetDir, "wp-plugin/plugin.php.tpl");
-  fs.removeSync(pluginTplTempPath);
+  await fsp.rm(pluginTplTempPath, { force: true });
+
+  // Procesar config.env.tpl
+  const configTpl = await fsp.readFile(
+    path.join(templateDir, ".env.tpl"),
+    "utf-8"
+  );
+
+  const configContent = configTpl
+    .replace(/<%= componentName %>/g, answers.pluginName)
+    .replace(/<%= componentDescription %>/g, answers.pluginDescription)
+    .replace(/<%= author %>/g, answers.author)
+    .replace(/<%= slug %>/g, answers.slug);
+
+  const configEnvPath = path.join(targetDir, `.env`);
+  await fsp.writeFile(configEnvPath, configContent, "utf-8");
+
+  const configTplTempPath = path.join(targetDir, ".env.tpl");
+  await fsp.rm(configTplTempPath, { force: true });
 
   // 4. Mensaje final
   console.log(`✅ Proyecto creado en ${answers.dir}`);

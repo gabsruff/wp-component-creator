@@ -1,6 +1,11 @@
 {
+  "name": "create-wp-component",
+  "version": "1.0.0",
+  "main": "index.js",
+  "bin": {
+    "create-wp-component": "./index.js"
+  },
   "dependencies": {
-    "fs-extra": "^11.3.1",
     "inquirer": "^12.9.3"
   },
   "type": "module"

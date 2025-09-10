@@ -1,7 +1,7 @@
 <?php
 /**
- * Plugin Name: <%= pluginName %>
- * Description: <%= pluginDescription %>
+ * Plugin Name: <%= componentName %>
+ * Description: <%= componentDescription %>
  * Version: 1.0.0
  * Author: <%= author %>
  */
@@ -18,17 +18,11 @@ function <%= slug %>_enqueue_scripts() {
         '1.0.0',
         true
     );
-    wp_enqueue_style(
-        '<%= slug %>-style',
-        $plugin_url . 'assets/index.css',
-        array(),
-        '1.0.0'
-    );
 }
 add_action( 'wp_enqueue_scripts', '<%= slug %>_enqueue_scripts' );
 
 // Shortcode para renderizar el componente
 function component_shortcode() {
-    return '<div id="component"></div>';
+    return '<div id="<%= slug %>"></div>';
 }
 add_shortcode( '<%= slug %>', '<%= slug %>_shortcode' );

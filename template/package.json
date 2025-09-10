@@ -1,20 +1,22 @@
 {
-  "name": "template",
+  "name": "wordpress-component",
   "version": "1.0.0",
-  "description": "",
+  "description": "This is a a component created with javascript using vite, optimized for deployment in a wordpress installation",
   "main": "index.js",
   "scripts": {
     "dev": "vite",
     "build": "vite build",
-    "config": "node scripts/setup-ftp.js",
-    "deploy": "node scripts/deploy.js"
+    "ftp-config": "node scripts/setFtpCredentials.js",
+    "deploy": "node scripts/verifyFtpCredentials.js"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
-  "type": "module",  
+  "type": "module",
   "dependencies": {
+    "autoprefixer": "^10.4.21",
     "basic-ftp": "^5.0.5",
+    "dotenv": "^17.2.2",
     "inquirer": "^12.9.3",
     "vite": "^7.1.3"
   }
