@@ -1,10 +1,10 @@
 import { defineConfig } from "vite";
 import crypto from "crypto";
-import dotenv from "dotenv";
+import { readFile } from "fs/promises";
 
-dotenv.config();
-
-const componentName = process.env.COMPONENT_SLUG;
+const raw = await readFile("./component.config.json", "utf-8");
+const config = JSON.parse(raw);
+const componentName = config.slug;
 
 export default defineConfig({
   build: {

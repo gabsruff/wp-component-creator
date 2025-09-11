@@ -5,8 +5,9 @@
   "main": "index.js",
   "scripts": {
     "dev": "vite",
-    "build": "vite build",
+    "build": "node scripts/buildPHP.js && vite build",
     "ftp-config": "node scripts/setFtpCredentials.js",
+    "config": "node scripts/updateConfig.js",
     "deploy": "node scripts/verifyFtpCredentials.js"
   },
   "keywords": [],

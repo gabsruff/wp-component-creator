@@ -10,11 +10,11 @@ export function checkEnv(vars) {
   const missing = vars.filter((v) => !process.env[v]);
 
   if (missing.length > 0) {
-    console.log("❌ Faltan variables de entorno:");
+    console.log("❌ Environment variables missing:");
     missing.forEach((v) => console.log(` - ${v}`));
     return false;
   } else {
-    console.log("✅ Todas las variables de entorno están definidas.");
+    console.log("✅ Environment variables saved in '.env'");
     return true;
   }
 }

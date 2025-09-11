@@ -10,9 +10,9 @@ const reqCredentials = [
 ];
 
 if (!checkEnv(reqCredentials)) {
-  console.log("Missing credentials");
+  console.log("Missing credentials.");
   await setFtpCredentials(); // puede pedir datos al usuario y actualizar .env
 } else {
-  console.log("Credentials found, attempting to deploy");
+  console.log("Credentials found, attempting to deploy...");
   await deployFtp();
 }
