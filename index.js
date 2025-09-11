@@ -9,22 +9,22 @@ const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const run = async () => {
   // 1. Preguntar al usuario
   const name = await input({
-    message: "Nombre del componente:",
-    default: "Mi componente",
+    message: "Component's name:",
+    default: "My componente",
   });
   const description = await input({
-    message: "Descripción:",
-    default: "Componente desarrollado con Vite",
+    message: "Description:",
+    default: "Component developed using Vite.",
   });
   const author = await input({ message: "Autor:", default: "Tu Nombre" });
   const slug = await input({
-    message: "Slug (sin espacios):",
-    default: "mi-componente",
+    message: "Slug (no-spaces):",
+    default: "my-component",
   });
 
   const dir = await input({
-    message: "Directorio destino:",
-    default: "my-plugin",
+    message: "Target directory:",
+    default: "my-component",
   });
 
   // 2. Copiar archivos base (Node 16.7+ soporta fs.cp con recursive)

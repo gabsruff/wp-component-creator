@@ -6,18 +6,21 @@ const currentConfig = JSON.parse(
   fs.readFileSync("component.config.json", "utf-8")
 );
 
-const updateConfig = async () => {
+export const updateConfig = async () => {
   const name = await input({
-    message: "Nombre del componente:",
+    message: "Component's Name:",
     default: currentConfig.name,
   });
   const description = await input({
-    message: "Descripción:",
+    message: "Description:",
     default: currentConfig.description,
   });
-  const author = await input({ message: "Autor:", default: "Tu Nombre" });
+  const author = await input({
+    message: "Author:",
+    default: currentConfig.author,
+  });
   const slug = await input({
-    message: "Slug (sin espacios):",
+    message: "Slug (no-spaces):",
     default: currentConfig.slug,
   });
 
@@ -35,5 +38,3 @@ const updateConfig = async () => {
     "Config saved in 'component.config.json'. You can modify the config file or run the command 'npm run config' to update."
   );
 };
-
-updateConfig();
